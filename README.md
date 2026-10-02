@@ -21,7 +21,7 @@ User=j***@example.com password=**** token=****
 
 ```xml
 <dependency>
-    <groupId>io.github.YOUR_GITHUB_USERNAME</groupId>
+    <groupId>io.github.smartcompanionlab</groupId>
     <artifactId>log-sanitizer</artifactId>
     <version>1.0.0</version>
 </dependency>

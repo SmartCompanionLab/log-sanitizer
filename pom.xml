@@ -7,14 +7,14 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.anoopmr14</groupId>
+    <groupId>io.github.smartcompanionlab</groupId>
     <artifactId>log-sanitizer</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <name>Log Sanitizer</name>
     <description>Small Java utility for masking sensitive information in logs</description>
 
-    <url>https://github.com/anoopmr14/log-sanitizer</url>
+    <url>https://github.com/SmartCompanionLab/log-sanitizer</url>
 
     <licenses>
         <license>
@@ -25,18 +25,18 @@
 
     <developers>
         <developer>
-            <name>Anoop M R</name>
+            <name>SmartCompanionLab</name>
         </developer>
     </developers>
 
     <scm>
         <connection>
-            scm:git:git://github.com/anoopmr14/log-sanitizer.git
+            scm:git:git://github.com/SmartCompanionLab/log-sanitizer.git
         </connection>
         <developerConnection>
-            scm:git:ssh://github.com/anoopmr14/log-sanitizer.git
+            scm:git:ssh://github.com/SmartCompanionLab/log-sanitizer.git
         </developerConnection>
-        <url>https://github.com/anoopmr14/log-sanitizer</url>
+        <url>https://github.com/SmartCompanionLab/log-sanitizer</url>
     </scm>
 
     <properties>
@@ -55,13 +55,11 @@
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.2</version>
             </plugin>
-
         </plugins>
     </build>
 
