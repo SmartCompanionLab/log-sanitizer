@@ -28,3 +28,11 @@ jobs:
 
       - name: Build and test
         run: mvn clean verify
+
+      - name: Publish to Maven Central
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
+          CENTRAL_TOKEN: ${{ secrets.CENTRAL_TOKEN }}
+        run: mvn deploy
+
