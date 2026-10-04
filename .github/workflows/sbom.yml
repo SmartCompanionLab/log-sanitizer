@@ -1,11 +1,14 @@
 name: Generate SBOM
 
+# on:
+#   push:
+#     branches:
+#       - main
+#   workflow_dispatch:
 on:
-  push:
-    branches:
-      - main
+  workflow_call:
   workflow_dispatch:
-
+  
 jobs:
   sbom:
     runs-on: ubuntu-latest
