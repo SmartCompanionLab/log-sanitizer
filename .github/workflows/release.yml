@@ -24,3 +24,20 @@ jobs:
 
   reliability:
     uses: ./.github/workflows/reliability.yml
+
+  release-gate:
+    needs:
+      - sbom
+      - codeql
+      - lifecycle
+      - license
+      - performance
+      - reliability
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Release gate
+        run: |
+          echo "All release verification stages passed."
+          echo "Release gate PASSED."
