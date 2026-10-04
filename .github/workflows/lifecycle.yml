@@ -1,4 +1,4 @@
-name: SOUP Lifecycle Check
+name: Release Lifecycle Check
 
 on:
   push:
@@ -22,13 +22,13 @@ jobs:
           java-version: '17'
           cache: maven
 
-      - name: Run SOUP lifecycle check
+      - name: Run Release lifecycle check
         shell: pwsh
-        run: ./soup/scripts/check-lifecycle.ps1
+        run: ./release-data/scripts/check-lifecycle.ps1
 
       - name: Upload lifecycle report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: soup-lifecycle-report
-          path: target/soup-lifecycle-report.csv
+          name: release-lifecycle-report
+          path: target/release-lifecycle-report.csv

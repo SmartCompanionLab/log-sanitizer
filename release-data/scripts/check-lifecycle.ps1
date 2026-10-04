@@ -1,10 +1,10 @@
 # ==========================================
-# SOUP Dependency Lifecycle Report
+# Release Dependency Lifecycle Report
 # ==========================================
 
 $dependencyFile = "target/runtime-dependencies.txt"
-$mappingFile    = "soup/config/lifecycle-mapping.csv"
-$reportFile     = "target/soup-lifecycle-report.csv"
+$mappingFile    = "release-data/config/lifecycle-mapping.csv"
+$reportFile     = "target/release-lifecycle-report.csv"
 
 # ------------------------------------------
 # Validate mapping
@@ -216,7 +216,7 @@ foreach ($dependency in $dependencies) {
 # ------------------------------------------
 
 Write-Host ""
-Write-Host "========== SOUP LIFECYCLE REPORT =========="
+Write-Host "========== RELEASE LIFECYCLE REPORT =========="
 Write-Host ""
 
 $results | Format-Table -AutoSize
@@ -244,9 +244,9 @@ Write-Host "FAIL   : $failCount"
 Write-Host "REVIEW : $reviewCount"
 
 if ($failCount -gt 0) {
-    Write-Error "SOUP lifecycle gate FAILED - EOL dependency detected."
+    Write-Error "Release lifecycle gate FAILED - EOL dependency detected."
     exit 1
 }
 
-Write-Host "SOUP lifecycle gate PASSED."
+Write-Host "Release lifecycle gate PASSED."
 exit 0

@@ -1,0 +1,47 @@
+name: Release V&V Evidence
+
+on:
+  workflow_dispatch:
+
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Build and test
+        run: mvn clean test "-Dgpg.skip=true"
+
+      - name: Generate SBOM
+        run: |
+          cp pom.xml pom-sbom.xml
+          sed -i 's/<extensions>true<\/extensions>/<extensions>false<\/extensions>/' pom-sbom.xml
+          mvn -f pom-sbom.xml org.cyclonedx:cyclonedx-maven-plugin:2.9.1:makeBom
+
+      - name: Generate lifecycle report
+        shell: pwsh
+        run: ./release-data/scripts/check-lifecycle.ps1
+        continue-on-error: true
+
+      - name: Collect evidence
+        run: |
+          mkdir -p release-data/evidence
+          cp target/bom.json release-data/evidence/sbom.json
+          cp target/release-lifecycle-report.csv release-data/evidence/lifecycle-report.csv
+          git rev-parse HEAD > release-data/evidence/git-commit.txt
+
+      - name: Upload Release evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-vv-evidence
+          path: release-data/evidence/
