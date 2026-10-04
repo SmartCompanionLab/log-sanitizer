@@ -7,5 +7,20 @@ on:
   workflow_dispatch:
 
 jobs:
+  sbom:
+    uses: ./.github/workflows/sbom.yml
+
+  codeql:
+    uses: ./.github/workflows/codeql.yml
+
   lifecycle:
     uses: ./.github/workflows/lifecycle.yml
+
+  license:
+    uses: ./.github/workflows/license-check.yml
+
+  performance:
+    uses: ./.github/workflows/performance.yml
+
+  reliability:
+    uses: ./.github/workflows/reliability.yml
