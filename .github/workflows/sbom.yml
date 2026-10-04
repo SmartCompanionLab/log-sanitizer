@@ -39,5 +39,5 @@ jobs:
       - name: Upload SBOM
         uses: actions/upload-artifact@v4
         with:
-          name: sbom
+          name: release-sbom
           path: target/bom.*

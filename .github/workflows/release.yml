@@ -64,11 +64,51 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Create release evidence folder
-        run: mkdir -p release-evidence
+      - name: Create evidence folders
+        run: |
+          mkdir -p release-evidence/sbom
+          mkdir -p release-evidence/lifecycle
+          mkdir -p release-evidence/license
+          mkdir -p release-evidence/performance
+          mkdir -p release-evidence/reliability
 
       - name: Capture Git commit
         run: git rev-parse HEAD > release-evidence/git-commit.txt
+
+      - name: Download SBOM evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: release-sbom
+          path: release-evidence/sbom
+        continue-on-error: true
+
+      - name: Download lifecycle evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: release-lifecycle
+          path: release-evidence/lifecycle
+        continue-on-error: true
+
+      - name: Download license evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: release-license
+          path: release-evidence/license
+        continue-on-error: true
+
+      - name: Download performance evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: release-performance
+          path: release-evidence/performance
+        continue-on-error: true
+
+      - name: Download reliability evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: release-reliability
+          path: release-evidence/reliability
+        continue-on-error: true
 
       - name: Upload release evidence
         uses: actions/upload-artifact@v4

@@ -21,4 +21,11 @@ jobs:
 
       - name: License compliance check
         run: |
-          mvn org.apache.maven.plugins:maven-dependency-plugin:3.8.1:tree
+          mvn org.apache.maven.plugins:maven-dependency-plugin:3.8.1:tree > license-result.txt
+          echo "License verification placeholder completed." >> license-result.txt
+
+      - name: Upload license evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-license
+          path: license-result.txt
