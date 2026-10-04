@@ -11,6 +11,9 @@ permissions:
   security-events: write
 
 jobs:
+  build:
+    uses: ./.github/workflows/release-build.yml
+
   sbom:
     uses: ./.github/workflows/sbom.yml
 
@@ -32,6 +35,7 @@ jobs:
   # Release Gate
   release-gate:
     needs:
+      - build
       - sbom
       - codeql
       - lifecycle
@@ -51,6 +55,7 @@ jobs:
   evidence:
     if: always()
     needs:
+      - build
       - sbom
       - codeql
       - lifecycle
@@ -91,6 +96,13 @@ jobs:
           - Performance
           - Reliability
           EOF
+
+      - name: Download build evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: release-build
+          path: release-evidence/build
+        continue-on-error: true
 
       - name: Download SBOM evidence
         uses: actions/download-artifact@v4
