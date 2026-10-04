@@ -51,12 +51,18 @@
             <version>5.12.2</version>
             <scope>test</scope>
         </dependency>
+         <!-- For Vulnerability check, 3.17.0 has vulnerability issue and 3.18.0 has fix -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.18.0</version>
         </dependency>
-
+        <!-- Dependency to check the EOL/EOS status of dependencies -->
+        <dependency>
+            <groupId>org.graalvm.polyglot</groupId>
+            <artifactId>polyglot</artifactId>
+            <version>24.0.2</version>
+        </dependency>
     </dependencies>
 
     <build>

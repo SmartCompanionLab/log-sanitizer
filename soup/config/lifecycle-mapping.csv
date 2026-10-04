@@ -1,0 +1,4 @@
+groupId,artifactId,lifecycleProduct
+org.graalvm.*,*,graalvm-ce
+org.graalvm.polyglot,*,graalvm-ce
+org.apache.commons,commons-lang3,
