@@ -7,10 +7,13 @@ name: Release Lifecycle Check
 #     branches: [ "main" ]
 #   workflow_dispatch:
 
+# It can be called by the future release pipeline.
+# You can still run it manually from GitHub Actions.
+# It will not automatically run on every commit/PR.
 on:
   workflow_call:
   workflow_dispatch:
-  
+
 jobs:
   lifecycle:
     runs-on: ubuntu-latest
