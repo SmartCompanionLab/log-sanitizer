@@ -20,8 +20,8 @@ public final class LogSanitizer {
     }
 
     public static String sanitize(String input) {
-        if (input == null) {
-            return null;
+        if (input == null || input.isEmpty()) {
+                return input;
         }
 
         String result = PASSWORD.matcher(input)
