@@ -6,9 +6,9 @@ on:
       - 'v*'
   workflow_dispatch:
 
-  permissions:
-    contents: read
-    security-events: write
+permissions:
+  contents: read
+  security-events: write
 
 jobs:
   sbom:
