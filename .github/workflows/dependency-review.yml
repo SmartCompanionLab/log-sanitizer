@@ -16,3 +16,5 @@ jobs:
 
       - name: Dependency Review
         uses: actions/dependency-review-action@v4
+        with:
+         deny-licenses: GPL-3.0, LGPL-2.0
