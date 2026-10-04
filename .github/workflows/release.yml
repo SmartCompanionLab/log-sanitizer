@@ -75,6 +75,23 @@ jobs:
       - name: Capture Git commit
         run: git rev-parse HEAD > release-evidence/git-commit.txt
 
+            - name: Create release manifest
+        run: |
+          cat > release-evidence/manifest.txt <<EOF
+          Release Evidence Package
+          ========================
+          Git Commit: $(cat release-evidence/git-commit.txt)
+          Repository: $GITHUB_REPOSITORY
+          Workflow Run: $GITHUB_RUN_ID
+
+          Evidence:
+          - SBOM
+          - Lifecycle
+          - License
+          - Performance
+          - Reliability
+          EOF
+
       - name: Download SBOM evidence
         uses: actions/download-artifact@v4
         with:
