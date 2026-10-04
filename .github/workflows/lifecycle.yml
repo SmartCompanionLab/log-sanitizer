@@ -24,7 +24,7 @@ jobs:
 
       - name: Run SOUP lifecycle check
         shell: pwsh
-        run: ./soup/check-lifecycle.ps1
+        run: ./soup/scripts/check-lifecycle.ps1
 
       - name: Upload lifecycle report
         uses: actions/upload-artifact@v4
