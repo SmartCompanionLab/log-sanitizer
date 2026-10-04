@@ -229,3 +229,24 @@ $results | Export-Csv $reportFile -NoTypeInformation
 
 Write-Host ""
 Write-Host "Report generated: $reportFile"
+
+# ------------------------------------------
+# Release Gate
+# ------------------------------------------
+
+$failCount = @($results | Where-Object { $_.Status -eq "FAIL" }).Count
+
+$reviewCount = @($results | Where-Object { $_.Status -eq "REVIEW" }).Count
+
+Write-Host ""
+Write-Host "Release Gate Summary:"
+Write-Host "FAIL   : $failCount"
+Write-Host "REVIEW : $reviewCount"
+
+if ($failCount -gt 0) {
+    Write-Error "SOUP lifecycle gate FAILED - EOL dependency detected."
+    exit 1
+}
+
+Write-Host "SOUP lifecycle gate PASSED."
+exit 0
