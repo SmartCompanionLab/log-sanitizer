@@ -1,0 +1,15 @@
+name: Release Performance Verification
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  performance:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Performance verification
+        run: |
+          echo "Performance verification placeholder"
+          echo "Actual performance tests will be added later."

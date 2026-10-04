@@ -1,0 +1,15 @@
+name: Release Reliability Verification
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  reliability:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Reliability verification
+        run: |
+          echo "Reliability verification placeholder"
+          echo "Actual reliability tests will be added later."
